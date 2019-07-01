@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orz.dao.UserDao">
+
+    <!--查询所有用户信息-->
+    <select id="findAll" resultType="com.orz.bean.User">
+        select * from tb_user
+    </select>
+
+    <select id="findOneUserByUserName" parameterType="java.lang.String"  resultType="com.orz.bean.User">
+        select * from tb_user
+        where userName=#{userName}
+    </select>
+
+    <select id="findOneUserByUserId" parameterType="java.lang.Integer" resultType="com.orz.bean.User">
+         select * from tb_user
+        where userId=#{userId}
+    </select>
+
+    <!--插入一个用户-->
+    <insert id="insertOneUser" parameterType="com.orz.bean.User">
+        insert into tb_user (userId,userName,userPsw,other1,other2)
+        values (#{userId},#{userName},#{userPsw},#{other1},#{other2})
+    </insert>
+
+</mapper>
